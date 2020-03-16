@@ -6,4 +6,7 @@ COPY . /app/
 
 RUN set -x \
     && cd /app \
-    && composer install --no-dev
+    && composer install --no-dev \
+    && chmod -R 0777 cache/ \
+    && docker-run-bootstrap \
+    && docker-image-cleanup
